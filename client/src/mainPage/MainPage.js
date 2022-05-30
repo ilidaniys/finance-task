@@ -18,19 +18,17 @@ const MainTittle = styled.div`
 `
 
 const MainPage = () => {
-    return (
-        <MainWrapper>
-            <MainTittle>
-                You may be interested in!
-            </MainTittle>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-        </MainWrapper>
-    );
+    return (<MainWrapper>
+        <MainTittle>
+            You may be interested in!
+        </MainTittle>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+    </MainWrapper>);
 };
 
 export default MainPage;

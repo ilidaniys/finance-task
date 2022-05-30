@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   background: var(--background-main);
-  //background: black;
 `
 
 function App() {
