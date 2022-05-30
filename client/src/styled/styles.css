@@ -1,0 +1,17 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+
+
+    --height-card: calc(100%/7);
+    --width-main: 70%;
+    --height-main: 60%;
+
+    --background-main: #788AA3;
+    --background-wrapper: #F0F4EF;
+}
+
