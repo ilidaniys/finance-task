@@ -1,34 +1,26 @@
 import React from 'react';
 import styled from "styled-components";
 import Card from "./card/Card";
+import MainTittle from "./mainElement/MainTittle";
+
 
 const MainWrapper = styled.main`
   width: var(--width-main);
   height: var(--height-main);
   border-radius: 1rem;
-  padding: 2rem 1rem;
+  padding: 1rem 1rem 2rem 1rem;
   background: var(--background-wrapper);
-`
-const MainTittle = styled.div`
-  width: 100%;
-  height: var(--height-card);
-  border-bottom: .1rem solid;
-  font-size: 1.8rem;
-  font-weight: 700;
 `
 
 const MainPage = () => {
-    return (<MainWrapper>
-        <MainTittle>
-            You may be interested in!
-        </MainTittle>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-    </MainWrapper>);
+
+
+    return (
+        <MainWrapper>
+            <MainTittle/>
+            <Card/>
+        </MainWrapper>
+    );
 };
 
 export default MainPage;
