@@ -28,7 +28,7 @@ const CardWrapper = styled.div`
 `
 
 const Card = () => {
-    const finance = useSelector(state => state.finance)
+    const finance = useSelector(state => state.finance.stocks)
 
     const renderCards = (cardList) => {
        return  cardList.map((cardItem, key) => (

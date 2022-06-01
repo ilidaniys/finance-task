@@ -4,7 +4,7 @@ import ItemLayout from "./ItemLayout";
 
 
 const Tittle = styled.div`
-  text-transform: capitalize;
+  text-transform: uppercase;
   color: #ffffff;
   background: #444B6E;
   padding: .4rem;

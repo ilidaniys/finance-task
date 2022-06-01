@@ -7,11 +7,12 @@
 :root{
 
 
-    --height-card: calc(100%/7);
-    --width-main: 70%;
-    --height-main: 60%;
+    --height-card: calc(30rem/7);
+    --width-main: 70rem;
+    --height-main: 30rem;
 
     --background-main: #788AA3;
     --background-wrapper: #F0F4EF;
+    --connect-button: #B6D7BA;
 }
 

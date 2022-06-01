@@ -51,6 +51,10 @@ function trackTickers(socket) {
     getQuotes(socket);
   }, FETCH_INTERVAL);
 
+  socket.on('clear interval', ()=>{
+
+  })
+
   socket.on('disconnect', function() {
     clearInterval(timer);
   });
@@ -71,7 +75,10 @@ app.get('/', function(req, res) {
 });
 
 socketServer.on('connection', (socket) => {
+  console.log('user connect', socket.id)
+
   socket.on('start', () => {
+    console.log('start send')
     trackTickers(socket);
   });
 });
