@@ -3,13 +3,16 @@ import styled from "styled-components";
 import {useSelector} from "react-redux";
 
 const InputWrapper = styled.div`
-  width: 11rem;
-  height: 2.5rem;
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+
 `
 
 const InputPlace = styled.input`
-  width: 100%;
-  height: 100%;
+  width: 11rem;
+  height: 2.5rem;
   border: .1rem #444B6E solid;
   border-radius: 1rem;
   padding: .2rem .5rem;
@@ -23,6 +26,7 @@ const InputPlace = styled.input`
     text-align: center;
   }
 
+
   :focus {
     outline: none;
     background: #444B6E;
@@ -30,11 +34,23 @@ const InputPlace = styled.input`
   }
 
 `
+
+const ErrorMassage = styled.div`
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fa4545;
+`
 const Input = ({onChange}) => {
     const inputValue = useSelector(state => state.finance.inputValue)
+    const errorMassage = useSelector(state => state.finance.errorMassage)
     return (
         <InputWrapper>
             <InputPlace placeholder={'ADD your Ticker'} onChange={onChange} value={inputValue}/>
+            {errorMassage
+                ? <ErrorMassage>{errorMassage}</ErrorMassage>
+                : null
+            }
         </InputWrapper>
     );
 };

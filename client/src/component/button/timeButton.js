@@ -6,9 +6,8 @@ import {regular} from "@fortawesome/fontawesome-svg-core/import.macro";
 const TimeButtonWrapper = styled.div`
   height: 2.5rem;
   width: 5rem;
-  
-`
 
+`
 const Scale = styled.button`
   width: 100%;
   height: 100%;

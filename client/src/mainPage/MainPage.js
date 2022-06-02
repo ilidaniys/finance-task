@@ -2,7 +2,6 @@ import React from 'react';
 import styled from "styled-components";
 import Card from "./card/Card";
 import MainTittle from "./mainElement/MainTittle";
-import ConnectButton from "../component/button/ConnectButton";
 import InputHolder from "./mainElement/InputHolder";
 
 const AllWrapper = styled.main`
@@ -30,7 +29,6 @@ const MainPage = () => {
                 <InputHolder/>
                 <Card/>
             </MainWrapper>
-            <ConnectButton/>
         </AllWrapper>
     );
 };

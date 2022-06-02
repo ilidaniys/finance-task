@@ -28,7 +28,6 @@ const InputHolder = () => {
     const addNewTickerHolder = useCallback(() => (event) => {
         event.preventDefault()
         dispatch(addNewTicker())
-        dispatch(changeInputValue(''))
     }, [])
     return (
         <InputWrapper>

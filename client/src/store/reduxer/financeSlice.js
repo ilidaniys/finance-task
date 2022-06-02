@@ -5,6 +5,7 @@ const initialState = {
     stocks: [],
     pauseStocks: [],
     inputValue: '',
+    errorMassage: ''
 }
 
 
@@ -36,6 +37,7 @@ export const financeSlice = createSlice({
             }
         },
         turnOffTicker: (state, action) => {
+            console.log(action.payload)
             const removeItem = state.stocks.find((ticker) => {
                 if (ticker.ticker === action.payload) {
                     return ticker
@@ -55,8 +57,19 @@ export const financeSlice = createSlice({
             socket.emit('deleteTicker', action.payload)
         },
         addNewTicker: (state) => {
-            const upperCase = state.inputValue.toUpperCase()
-            socket.emit('addNewTicker', upperCase)
+
+            if (state.inputValue !== ''){
+                if (state.inputValue.length < 10){
+                    const upperCase = state.inputValue.toUpperCase()
+                    socket.emit('addNewTicker', upperCase)
+                    state.inputValue = ''
+                    state.errorMassage = ''
+                } else {
+                    state.errorMassage = 'to long name for ticker'
+                }
+            } else {
+             state.errorMassage = 'at least one symbol'
+            }
         },
         setNewTimer: (state, action) => {
             const seconds = action.payload * 1000

@@ -35,12 +35,12 @@ const Card = () => {
             return (
                 <CardWrapper key={key} status={cardItem.status}>
                     <NameTag title={cardItem.ticker} name={cardItem.name} width={'5rem'}/>
-                    <Price price={cardItem.price} width={'3rem'}/>
+                    <Price price={cardItem.price} width={'5rem'}/>
                     <ChangePrice
                         price={cardItem.change}
                         interest={cardItem.change_percent}
                         compare={cardItem.compare}
-                        width={'8rem'}
+                        width={'9rem'}
                     />
                     <Dividend
                         dividend={cardItem.dividend}

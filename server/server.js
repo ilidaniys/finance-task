@@ -65,10 +65,6 @@ function trackTickers(socket) {
         tickers.push(payload)
         console.log('tickers', tickers)
     })
-
-    socket.on('disconnect', function () {
-        clearInterval(timer);
-    });
 }
 
 const app = express();

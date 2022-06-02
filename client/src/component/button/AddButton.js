@@ -5,13 +5,13 @@ import {solid} from '@fortawesome/fontawesome-svg-core/import.macro'
 
 const Button = styled.button`
   border: none;
-  
-  > .addIcon{
+
+  > .addIcon {
     height: 2.2rem;
     cursor: pointer;
     color: #444B6E;
     transition: color ease-in-out .1s;
-    
+
     @keyframes shake {
       0% {
         transform: rotate(10deg);
@@ -27,7 +27,8 @@ const Button = styled.button`
         transform: rotate(0deg);
       }
     }
-    :hover{
+
+    :hover {
       color: var(--connect-button);
       animation: shake .2s ease-in-out;
     }

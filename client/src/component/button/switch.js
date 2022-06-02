@@ -11,11 +11,9 @@ const Button = styled.button`
   cursor: pointer;
   background: inherit;
 
-
   > .ban {
     color: ${props => props.pause ? 'red' : '#788AA3'};
     transition: color ease-in-out .1s;
-
 
     :hover {
       color: red;
@@ -45,7 +43,10 @@ const Switch = ({ticker}) => {
                     className="ban"/>
             </Button>
             <Button onClick={() => dispatch(removeTicker(ticker))}>
-                <FontAwesomeIcon icon={solid('trash-can')} size='xl' className="ban"/>
+                <FontAwesomeIcon
+                    icon={solid('trash-can')}
+                    size='xl'
+                    className="ban"/>
             </Button>
         </ItemLayout>
     );

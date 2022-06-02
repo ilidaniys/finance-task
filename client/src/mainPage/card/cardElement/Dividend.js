@@ -2,17 +2,13 @@ import React from 'react';
 import styled from "styled-components";
 import ItemLayout from "./ItemLayout";
 
-const DividendPrice = styled.div`
 
-`
-const Prof = styled.div`
-`
 
 const Dividend = ({dividend, profitability, width}) => {
     return (
         <ItemLayout width={width}>
-            <DividendPrice>{`${dividend}%`}</DividendPrice>
-            <Prof>{`${profitability}%`}</Prof>
+            <div>{`${dividend}%`}</div>
+            <div>{`${profitability}%`}</div>
         </ItemLayout>
     );
 };
