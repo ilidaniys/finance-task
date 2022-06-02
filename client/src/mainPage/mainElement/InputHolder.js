@@ -21,7 +21,6 @@ export const InputWrapper = styled.div`
 const InputHolder = () => {
     const dispatch = useDispatch()
     const takeValue = useCallback(() => (event) => {
-        console.log(event.target.value)
         dispatch(changeInputValue(event.target.value))
     }, [dispatch])
 

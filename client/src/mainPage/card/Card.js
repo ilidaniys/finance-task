@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import styled from "styled-components";
 import NameTag from "./cardElement/NameTag";
 import Price from "./cardElement/Price";
@@ -21,7 +21,6 @@ const CardWrapper = styled.div`
   background: ${props => props.status === false ? 'red' : 'inherit'};
   transition: filter ease-in-out .1s;
 
-
   :hover {
     filter: brightness(90%);
   }
@@ -30,7 +29,7 @@ const CardWrapper = styled.div`
 const Card = () => {
     const stocks = useSelector(state => state.finance.stocks)
 
-    const renderCards = (cardList) => {
+    const renderCards = useCallback((cardList) => {
         return cardList.map((cardItem, key) => {
             return (
                 <CardWrapper key={key} status={cardItem.status}>
@@ -52,7 +51,7 @@ const Card = () => {
                 </CardWrapper>
             )
         })
-    }
+    }, [stocks])
 
 
     return (

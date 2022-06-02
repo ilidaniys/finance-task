@@ -8,7 +8,6 @@ const initialState = {
     errorMassage: ''
 }
 
-
 export const financeSlice = createSlice({
     name: 'finance',
     initialState,
@@ -58,8 +57,8 @@ export const financeSlice = createSlice({
         },
         addNewTicker: (state) => {
 
-            if (state.inputValue !== ''){
-                if (state.inputValue.length < 10){
+            if (state.inputValue !== '') {
+                if (state.inputValue.length < 10) {
                     const upperCase = state.inputValue.toUpperCase()
                     socket.emit('addNewTicker', upperCase)
                     state.inputValue = ''
@@ -68,7 +67,7 @@ export const financeSlice = createSlice({
                     state.errorMassage = 'to long name for ticker'
                 }
             } else {
-             state.errorMassage = 'at least one symbol'
+                state.errorMassage = 'at least one symbol'
             }
         },
         setNewTimer: (state, action) => {
@@ -80,7 +79,6 @@ export const financeSlice = createSlice({
         }
     },
 })
-
 
 export const {
     refresh,

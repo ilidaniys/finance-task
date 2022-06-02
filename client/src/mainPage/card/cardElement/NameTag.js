@@ -2,7 +2,6 @@ import React from 'react';
 import styled from "styled-components";
 import ItemLayout from "./ItemLayout";
 
-
 const Tittle = styled.div`
   text-transform: uppercase;
   color: #ffffff;

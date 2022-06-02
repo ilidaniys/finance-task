@@ -3,10 +3,7 @@ import {io} from "socket.io-client";
 import {END, eventChannel} from "redux-saga";
 import {refresh} from "./financeSlice";
 
-
 export const socket = io('http://localhost:4000')
-
-
 
 export function* connectToServer (payload) {
     yield put(refresh(payload))
@@ -26,6 +23,5 @@ function* financeSaga() {
     })
     yield takeEvery(startConnectToServer, connectToServer)
 }
-
 
 export default financeSaga

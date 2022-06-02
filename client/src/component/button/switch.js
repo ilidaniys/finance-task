@@ -33,7 +33,6 @@ const Switch = ({ticker}) => {
         }
     }
 
-
     return (
         <ItemLayout>
             <Button onClick={() => offTicker(ticker)} pause={pauseStocks}>

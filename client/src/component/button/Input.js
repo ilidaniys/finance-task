@@ -25,8 +25,7 @@ const InputPlace = styled.input`
     text-transform: uppercase;
     text-align: center;
   }
-
-
+  
   :focus {
     outline: none;
     background: #444B6E;

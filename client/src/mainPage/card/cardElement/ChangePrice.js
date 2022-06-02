@@ -4,7 +4,6 @@ import ItemLayout from "./ItemLayout";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {solid} from "@fortawesome/fontawesome-svg-core/import.macro";
 
-
 const Price = styled.div`
   min-width: 12rem;
   padding: .5rem .5rem;
