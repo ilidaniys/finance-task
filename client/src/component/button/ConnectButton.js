@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import {useDispatch, useSelector} from "react-redux";
-import {connectToServer} from "../../store/reduxer/financeSlice";
+import {connectToServer} from "../../store/reduxer/financeSaga";
 
 
 
@@ -31,7 +31,7 @@ const ConnectButton = () => {
 
     const onClickHandler = () => {
         if (status === false) {
-                dispatch(connectToServer())
+            dispatch(connectToServer())
         } else {
 
         }

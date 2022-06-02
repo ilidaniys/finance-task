@@ -8,11 +8,11 @@ const DividendPrice = styled.div`
 const Prof = styled.div`
 `
 
-const Dividend = ({dividend, profitability}) => {
+const Dividend = ({dividend, profitability, width}) => {
     return (
-        <ItemLayout>
-            <DividendPrice>{dividend}</DividendPrice>
-            <Prof>{profitability}</Prof>
+        <ItemLayout width={width}>
+            <DividendPrice>{`${dividend}%`}</DividendPrice>
+            <Prof>{`${profitability}%`}</Prof>
         </ItemLayout>
     );
 };

@@ -1,28 +1,11 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {io} from "socket.io-client";
-
+import {createSlice} from "@reduxjs/toolkit";
+import {socket} from "./financeSaga";
 
 const initialState = {
     stocks: [],
-    status: false
+    pauseStocks: [],
 }
 
-export const connectToServer = createAsyncThunk(
-    'connect',
-    (thunkAPI) => {
-        const socket = io('http://localhost:4000')
-        console.log(socket)
-        console.log('user_online')
-        socket.on('connect', () => {
-            socket.emit('start')
-        });
-        socket.on('ticker', (res) => {
-            console.log('res', res)
-            refresh(res)
-        })
-
-    }
-)
 
 export const financeSlice = createSlice({
     name: 'finance',
@@ -32,18 +15,51 @@ export const financeSlice = createSlice({
             state.status = action.payload
         },
         refresh: (state, action) => {
-            state.stocks = action.payload
+            if (state.stocks.length !== 0) {
+                for (let i = 0; i < action.payload.length; i++) {
+                    console.log('state.stocks', state.stocks)
+                    console.log('action.payload', action.payload)
+                    if (state.pauseStocks.includes(state.stocks[i].ticker)) {
+                        continue
+                    }
+                    if (state.stocks[i].price > action.payload[i].price) {
+                        state.stocks[i] = action.payload[i]
+                        state.stocks[i].compare = true
+                    } else {
+                        state.stocks[i] = action.payload[i]
+                        state.stocks[i].compare = false
+                    }
+                }
+            } else {
+                state.stocks = action.payload
+            }
+        },
+        turnOffTicker: (state, action) => {
+            const removeItem = state.stocks.find((ticker) => {
+                if (ticker.ticker === action.payload) {
+                    return ticker
+                }
+            })
+            state.pauseStocks.push(String(removeItem.ticker))
+        },
+        turnOnTicker: (state, action) => {
+            state.pauseStocks = state.pauseStocks.filter((ticker) => {
+                return ticker !== action.payload
+            })
+        },
+        setTickersStatus: (state, action) => {
+
+        },
+        removeTicker: (state, action) => {
+            console.log('removeTicker', action.payload)
+            state.stocks = state.stocks.filter((ticker)=>{
+                return ticker.ticker !== action.payload
+            })
+            socket.emit('deleteTicker', action.payload)
         }
     },
-    extraReducers: {
-        [connectToServer.fulfilled]: (state, action) => {
-            console.log(action.payload)
-            state.stocks = action.payload
-        }
-    }
 })
 
 
-
-export const {connect, refresh} = financeSlice.actions
+export const {connect, refresh, setTickersStatus, turnOffTicker, turnOnTicker, removeTicker} = financeSlice.actions
 export default financeSlice.reducer

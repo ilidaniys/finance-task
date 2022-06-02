@@ -1,12 +1,11 @@
 import React from 'react';
-import styled from "styled-components";
 import ItemLayout from "./ItemLayout";
 
 
 
-const Price = ({price}) => {
+const Price = ({price, width}) => {
     return (
-        <ItemLayout>
+        <ItemLayout width={width}>
             {`${price}$`}
         </ItemLayout>
     );

@@ -13,13 +13,15 @@ const AllWrapper = styled.main`
 const MainWrapper = styled.div`
   width: auto;
   max-width: var(--width-main);
-  height: var(--height-main);
+  height: auto;
+  min-height: var(--height-main);
   border-radius: 1rem;
   padding: 1rem 1rem 2rem 1rem;
   background: var(--background-wrapper);
 `
 
 const MainPage = () => {
+
 
 
     return (

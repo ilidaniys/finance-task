@@ -11,19 +11,13 @@ const Tittle = styled.div`
   font-weight: 700;
   border-radius: 1rem;
 `
-const Name = styled.div`
 
-`
-
-const NameTag = ({title, name}) => {
+const NameTag = ({title, width}) => {
     return (
-        <ItemLayout>
+        <ItemLayout width={width}>
             <Tittle>
                 {title}
             </Tittle>
-            <Name>
-                {name}
-            </Name>
         </ItemLayout>
     );
 };

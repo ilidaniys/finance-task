@@ -7,9 +7,9 @@ const TimeWrapper = styled.div`
 
 `
 
-const LastTradeTime = ({time}) => {
+const LastTradeTime = ({time, width}) => {
     return (
-        <ItemLayout>
+        <ItemLayout width={width}>
             <TimeWrapper>
                 {`${time}`}
             </TimeWrapper>

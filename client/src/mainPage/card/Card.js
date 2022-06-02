@@ -6,19 +6,19 @@ import ChangePrice from "./cardElement/ChangePrice";
 import LastTradeTime from "./cardElement/LastTradeTime";
 import Dividend from "./cardElement/Dividend";
 import {useSelector} from "react-redux";
+import Switch from "../../component/button/switch";
 
 
 const CardWrapper = styled.div`
   width: 100%;
-  height: var(--height-card);
+  min-height: var(--height-card);
   border-bottom: .1rem solid;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
   padding: 0 .5rem;
-  cursor: pointer;
-  background: inherit;
+  background: ${props => props.status === false ? 'red' : 'inherit'};
   transition: filter ease-in-out .1s;
 
 
@@ -28,25 +28,36 @@ const CardWrapper = styled.div`
 `
 
 const Card = () => {
-    const finance = useSelector(state => state.finance.stocks)
+    const stocks = useSelector(state => state.finance.stocks)
 
     const renderCards = (cardList) => {
-       return  cardList.map((cardItem, key) => (
-            <CardWrapper key={key}>
-                <NameTag title={cardItem.title} name={cardItem.name}/>
-                <Price price={cardItem.price}/>
-                <ChangePrice price={cardItem.changePrice} interest={cardItem.changePriceInterest}/>
-                <Dividend dividend={cardItem.dividend} profitability={cardItem.profit}/>
-                <LastTradeTime time={cardItem.date}/>
-            </CardWrapper>
-        ))
+        return cardList.map((cardItem, key) => {
+            return (
+                <CardWrapper key={key} status={cardItem.status}>
+                    <NameTag title={cardItem.ticker} name={cardItem.name} width={'5rem'}/>
+                    <Price price={cardItem.price} width={'3rem'}/>
+                    <ChangePrice
+                        price={cardItem.change}
+                        interest={cardItem.change_percent}
+                        compare={cardItem.compare}
+                        width={'8rem'}
+                    />
+                    <Dividend
+                        dividend={cardItem.dividend}
+                        profitability={cardItem.profit}
+                        width={'8rem'}
+                    />
+                    <LastTradeTime time={cardItem.last_trade_time}/>
+                    <Switch ticker={cardItem.ticker}/>
+                </CardWrapper>
+            )
+        })
     }
-
 
 
     return (
         <>
-            {renderCards(finance)}
+            {renderCards(stocks)}
         </>
     );
 };

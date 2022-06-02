@@ -3,13 +3,14 @@ import styled from "styled-components";
 
 const ItemLayoutWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   gap: 2rem;
+  min-width: ${props => props.width};
 `
-const ItemLayout = ({children}) => {
+const ItemLayout = ({children, width}) => {
     return (
-        <ItemLayoutWrapper>
+        <ItemLayoutWrapper width={width}>
             {children}
         </ItemLayoutWrapper>
     );
