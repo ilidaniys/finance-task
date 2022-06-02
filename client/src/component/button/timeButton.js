@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from "styled-components";
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {regular} from "@fortawesome/fontawesome-svg-core/import.macro";
 
 const TimeButtonWrapper = styled.div`
-  height: auto;
-  width: 3rem;
-
+  height: 2.5rem;
+  width: 5rem;
+  
 `
 
-const Scale = styled.div`
+const Scale = styled.button`
   width: 100%;
   height: 100%;
   font-size: 1.6rem;
@@ -16,8 +17,10 @@ const Scale = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: .5rem;
   text-transform: capitalize;
   cursor: pointer;
+  border: none;
   background: #D4D2D5;
   border-radius: .6rem;
   transition: filter ease-in-out .05s;
@@ -27,11 +30,12 @@ const Scale = styled.div`
   }
 `
 
-const TimeButton = ({scale = 'x1'}) => {
+const TimeButton = ({children, onClick}) => {
     return (
         <TimeButtonWrapper>
-            <Scale>
-                {scale}
+            <Scale onClick={onClick}>
+                <FontAwesomeIcon icon={regular('clock')}/>
+                {children}
             </Scale>
         </TimeButtonWrapper>
     );

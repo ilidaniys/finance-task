@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import styled from "styled-components";
 import TimeButton from "../../component/button/timeButton";
+import {useDispatch} from "react-redux";
+import {setNewTimer} from "../../store/reduxer/financeSlice";
 
 const MainTittleWrapper = styled.div`
   width: 100%;
@@ -26,16 +28,29 @@ const SwitchPanel = styled.div`
 `
 
 const MainTittle = () => {
+    const dispatch = useDispatch()
+    const changeTime = useCallback((count) => () => {
+        dispatch(setNewTimer(count))
+    }, [dispatch])
+
     return (
         <MainTittleWrapper>
             <Tittle>
                 You may be interested in!
             </Tittle>
             <SwitchPanel>
-                <TimeButton scale={'x1'}/>
-                <TimeButton scale={'x3'}/>
-                <TimeButton scale={'x5'}/>
-                <TimeButton scale={'x10'}/>
+                <TimeButton onClick={changeTime(3)}>
+                    <sub>3s</sub>
+                </TimeButton>
+                <TimeButton onClick={changeTime(5)}>
+                    <sub>5s</sub>
+                </TimeButton>
+                <TimeButton onClick={changeTime(7)}>
+                    <sub>7s</sub>
+                </TimeButton>
+                <TimeButton onClick={changeTime(10)}>
+                    <sub>10s</sub>
+                </TimeButton>
             </SwitchPanel>
         </MainTittleWrapper>
     );

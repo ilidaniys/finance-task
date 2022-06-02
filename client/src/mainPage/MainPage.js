@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Card from "./card/Card";
 import MainTittle from "./mainElement/MainTittle";
 import ConnectButton from "../component/button/ConnectButton";
+import InputHolder from "./mainElement/InputHolder";
 
 const AllWrapper = styled.main`
   display: flex;
@@ -12,7 +13,7 @@ const AllWrapper = styled.main`
 
 const MainWrapper = styled.div`
   width: auto;
-  max-width: var(--width-main);
+  min-width: var(--width-main);
   height: auto;
   min-height: var(--height-main);
   border-radius: 1rem;
@@ -22,12 +23,11 @@ const MainWrapper = styled.div`
 
 const MainPage = () => {
 
-
-
     return (
         <AllWrapper>
             <MainWrapper>
                 <MainTittle/>
+                <InputHolder/>
                 <Card/>
             </MainWrapper>
             <ConnectButton/>

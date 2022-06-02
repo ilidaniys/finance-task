@@ -3,12 +3,14 @@ import styled from 'styled-components'
 import MainPage from "./mainPage/MainPage";
 
 const Wrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--background-main);
+  overflow-x: hidden;
 `
 
 function App() {
@@ -16,7 +18,6 @@ function App() {
         <Wrapper>
             <MainPage/>
         </Wrapper>
-
     );
 }
 

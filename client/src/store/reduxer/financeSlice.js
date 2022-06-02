@@ -4,6 +4,7 @@ import {socket} from "./financeSaga";
 const initialState = {
     stocks: [],
     pauseStocks: [],
+    inputValue: '',
 }
 
 
@@ -11,23 +12,23 @@ export const financeSlice = createSlice({
     name: 'finance',
     initialState,
     reducers: {
-        connect: (state, action) => {
-            state.status = action.payload
-        },
         refresh: (state, action) => {
             if (state.stocks.length !== 0) {
                 for (let i = 0; i < action.payload.length; i++) {
-                    console.log('state.stocks', state.stocks)
-                    console.log('action.payload', action.payload)
-                    if (state.pauseStocks.includes(state.stocks[i].ticker)) {
-                        continue
-                    }
-                    if (state.stocks[i].price > action.payload[i].price) {
-                        state.stocks[i] = action.payload[i]
-                        state.stocks[i].compare = true
+                    console.log('state.stocks', state.stocks.length)
+                    if (state.stocks[i]) {
+                        if (state.pauseStocks.includes(state.stocks?.[i].ticker)) {
+                            continue
+                        }
+                        if (state.stocks[i].price > action.payload[i].price) {
+                            state.stocks[i] = action.payload[i]
+                            state.stocks[i].compare = true
+                        } else {
+                            state.stocks[i] = action.payload[i]
+                            state.stocks[i].compare = false
+                        }
                     } else {
                         state.stocks[i] = action.payload[i]
-                        state.stocks[i].compare = false
                     }
                 }
             } else {
@@ -47,19 +48,34 @@ export const financeSlice = createSlice({
                 return ticker !== action.payload
             })
         },
-        setTickersStatus: (state, action) => {
-
-        },
         removeTicker: (state, action) => {
-            console.log('removeTicker', action.payload)
-            state.stocks = state.stocks.filter((ticker)=>{
+            state.stocks = state.stocks.filter((ticker) => {
                 return ticker.ticker !== action.payload
             })
             socket.emit('deleteTicker', action.payload)
+        },
+        addNewTicker: (state) => {
+            const upperCase = state.inputValue.toUpperCase()
+            socket.emit('addNewTicker', upperCase)
+        },
+        setNewTimer: (state, action) => {
+            const seconds = action.payload * 1000
+            socket.emit('setNewTimer', seconds)
+        },
+        changeInputValue: (state, action) => {
+            state.inputValue = action.payload
         }
     },
 })
 
 
-export const {connect, refresh, setTickersStatus, turnOffTicker, turnOnTicker, removeTicker} = financeSlice.actions
+export const {
+    refresh,
+    turnOffTicker,
+    turnOnTicker,
+    removeTicker,
+    setNewTimer,
+    addNewTicker,
+    changeInputValue
+} = financeSlice.actions
 export default financeSlice.reducer

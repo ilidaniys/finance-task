@@ -9,7 +9,6 @@ export const socket = io('http://localhost:4000')
 
 
 export function* connectToServer (payload) {
-    console.log('payload',payload)
     yield put(refresh(payload))
 }
 

@@ -52,18 +52,18 @@ function trackTickers(socket) {
 
     let timer = setInterval(() => getQuotes(socket, tickers), FETCH_INTERVAL);
 
-    socket.on('clear interval', () => {
-
-    })
-
     socket.on('setNewTimer', (payload) => {
-        console.log('payload', payload)
         timer = setNewTimer(timer, payload, socket, tickers)
     })
 
     socket.on('deleteTicker', (payload) => {
-        console.log('deleteTicker')
        tickers = deleteTicker(payload, tickers)
+    })
+
+    socket.on('addNewTicker', (payload)=> {
+        console.log('addNewTicker', payload)
+        tickers.push(payload)
+        console.log('tickers', tickers)
     })
 
     socket.on('disconnect', function () {
