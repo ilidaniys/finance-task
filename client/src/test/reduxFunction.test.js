@@ -4,7 +4,7 @@ import reducer, {
     turnOnTicker,
     addNewTicker,
     changeInputValue
-} from './store/reduxer/financeSlice'
+} from '../store/reduxer/financeSlice'
 
 
 describe('User Test', () => {
